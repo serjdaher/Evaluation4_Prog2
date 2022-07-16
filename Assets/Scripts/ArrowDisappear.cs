@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallsTeleport : MonoBehaviour
+public class ArrowDisappear : MonoBehaviour
 {
     [SerializeField]
-    private GameObject teleport;
+    private GameObject arrow;
     // Start is called before the first frame update
     void Start()
     {
-        
+        arrow.SetActive(true);
     }
 
     // Update is called once per frame
@@ -17,12 +17,11 @@ public class BallsTeleport : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "BallsTeleport")
+        if (other.gameObject.CompareTag("Player"))
         {
-            transform.position = teleport.transform.position;
+            arrow.SetActive(false);
         }
     }
 }
